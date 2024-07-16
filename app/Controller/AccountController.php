@@ -177,4 +177,12 @@ class AccountController
             'message' => 'Currency not supported.'
         ];
     }
+
+    /**
+     * @return array
+     */
+    public function getCurrenciesOfAccount(): array
+    {
+        return $this->account->getCurrencies();
+    }
 }
