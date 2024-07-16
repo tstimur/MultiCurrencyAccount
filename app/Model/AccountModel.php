@@ -78,9 +78,7 @@ class AccountModel
         if (!isset($this->balances[$currencyCode])) {
             return false;
         }
-        if ($amount > $this->balances[$currencyCode]) {
-            return false;
-        }
+
         $this->balances[$currencyCode] -= $amount;
         return $amount;
     }
@@ -124,9 +122,7 @@ class AccountModel
         if (!isset($this->balances[$fromCurrencyCode]) || !isset($this->currencies[$toCurrencyCode])) {
             return false;
         }
-        if ($this->balances[$fromCurrencyCode] < $amount) {
-            return false;
-        }
+
         $fromCurrency = $this->currencies[$fromCurrencyCode];
         $toCurrency = $this->currencies[$toCurrencyCode];
         $fromAmount = $this->withdraw($fromCurrencyCode, $amount);
