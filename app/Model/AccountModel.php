@@ -16,6 +16,14 @@ class AccountModel
     }
 
     /**
+     * @return CurrencyModel
+     */
+    public function getMainCurrency(): CurrencyModel
+    {
+        return $this->mainCurrency;
+    }
+
+    /**
      * @param CurrencyModel $currency
      * @return void
      */
@@ -39,4 +47,6 @@ class AccountModel
         }
         return false;
     }
+
+
 }
