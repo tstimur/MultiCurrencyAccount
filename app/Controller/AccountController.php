@@ -68,7 +68,7 @@ class AccountController
                 'message' => 'The amount cannot be negative.'
             ];
         }
-        $this->deposit($currencyCode, $amount);
+        $this->account->deposit($currencyCode, $amount);
         return [
             'status' => 'success',
             'message' => 'Balance replenished in the amount of ' . $amount
