@@ -154,4 +154,19 @@ class AccountModel
 
         return true;
     }
+
+    /**
+     * @param string $currencyCode
+     * @param float $rate
+     * @return bool
+     * @throws Exception
+     */
+    public function updateExchangeRate(string $currencyCode, float $rate): bool
+    {
+        if (!isset($this->currencies[$currencyCode])) {
+            return false;
+        }
+        $this->currencies[$currencyCode]->setExchangeRateToBase($rate);
+        return true;
+    }
 }
