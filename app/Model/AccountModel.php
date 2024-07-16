@@ -16,16 +16,18 @@ class AccountModel
     }
 
     /**
-     * @return CurrencyModel
+     * @return string
+     * Получение основной валюты счета
      */
-    public function getMainCurrency(): CurrencyModel
+    public function getMainCurrency(): string
     {
-        return $this->mainCurrency;
+        return $this->mainCurrency->getCode();
     }
 
     /**
      * @param CurrencyModel $currency
      * @return void
+     * Добавление новой валюты в счет
      */
     public function addCurrency(CurrencyModel $currency): void
     {
@@ -38,6 +40,7 @@ class AccountModel
     /**
      * @param string $currencyCode
      * @return bool
+     * Выбор основной валюты счета
      */
     public function setMainCurrency(string $currencyCode): bool
     {
