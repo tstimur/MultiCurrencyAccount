@@ -11,8 +11,7 @@ class AccountController
 
     public function __construct(string $currencyCode, float $rate, AccountModel $account)
     {
-        $account = new AccountModel((new CurrencyModel($currencyCode, $rate)));
-        $this->account = $account;
+        $this->account = new AccountModel((new CurrencyModel($currencyCode, $rate)));
     }
 
     /**
