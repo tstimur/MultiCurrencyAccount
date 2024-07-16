@@ -169,4 +169,16 @@ class AccountModel
         $this->currencies[$currencyCode]->setExchangeRateToBase($rate);
         return true;
     }
+
+    /**
+     * @return array
+     */
+    public function getCurrencies(): array
+    {
+        $currencies = [];
+        foreach ($this->currencies as $code => $currency) {
+            $currencies[] = $code;
+        }
+        return $currencies;
+    }
 }
