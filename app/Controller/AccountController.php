@@ -161,11 +161,13 @@ class AccountController
     }
 
     /**
-     * @return array{status: string, message: string}
+     * @param string $currencyCode
+     * @param float $newRate
+     * @return string[]
      */
     public function updateRate(string $currencyCode, float $newRate): array
     {
-        if ($this->updateRate($currencyCode, $newRate)) {
+        if ($this->account->updateExchangeRate($currencyCode, $newRate)) {
             return [
                 'status' => 'success',
                 'message' => 'Exchange rate updated successfully.'
