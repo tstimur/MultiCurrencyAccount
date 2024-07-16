@@ -82,7 +82,6 @@ class AccountController
      */
     public function withdraw(string $currency, float $amount): array
     {
-        $amount = (float)$amount;
         if ($amount > $this->account->getBalance($currency)) {
             return [
                 'status' => 'error',
@@ -122,7 +121,6 @@ class AccountController
      */
     public function convertCurrency(string $fromCurrency, string $toCurrency, float $amount): array
     {
-        $amount = (float)$amount;
         if ($this->account->getBalance($fromCurrency) < $amount) {
             return [
                 'status' => 'error',
@@ -154,6 +152,23 @@ class AccountController
                     $currencyCode .
                     ' is disabled. The balance is converted to the main currency - ' .
                     $this->getMainCurrencyOfAccount()
+            ];
+        }
+        return [
+            'status' => 'error',
+            'message' => 'Currency not supported.'
+        ];
+    }
+
+    /**
+     * @return array{status: string, message: string}
+     */
+    public function updateRate(string $currencyCode, float $newRate): array
+    {
+        if ($this->updateRate($currencyCode, $newRate)) {
+            return [
+                'status' => 'success',
+                'message' => 'Exchange rate updated successfully.'
             ];
         }
         return [
